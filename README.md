@@ -29,5 +29,5 @@ docker rm -f open-webui
 ### Deploy Redis
 
 ```bash
-docker run -d --name <name> -v <loc>:/data -p 6379:6379 redis/redis-stack-server:latest
+docker run -d --name <name> -v <loc>:/data -p 6379:6379 -e REDIS_ARGS="--requirepass mypassword" redis/redis-stack-server:latest
 ```
