@@ -21,7 +21,14 @@ docker run -d --name <app> --env-file ./.env <username>/<image>
 ## Deploy Ollama
 
 ```bash
-docker run -d --gpus=all -v ollama:/root/.ollama -e OLLAMA_KEEP_ALIVE=24h -p 11434:11434 --name ollama ollama/ollama
+docker run -d --gpus=all -v ollama:/root/.ollama -e OLLAMA_HOST=0.0.0.0 -e OLLAMA_KEEP_ALIVE=24h -p 11434:11434 --name ollama ollama/ollama
+```
+
+## Deploy Open-webui
+
+```bash
+docker run -d -p 3001:8080 -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --network=host --name open-webui ghcr.io/open-webui/open-webui:main
+
 ```
 
 ### Deploy OpenWebUI with Ollama
