@@ -1,8 +1,8 @@
 # Assorted Docker Scripts
 
-a set of commonly used docker scripts
+a set of commonly used docker scripts by [@reddiedev](https://github.com/reddiedev)
 
-## Deploy Postgres via Docker CLI
+### Deploy Postgres via Docker CLI
 
 ```bash
 docker run --name <name> -v pg_data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_PASSWORD=<password> --restart unless-stopped -d postgres
@@ -11,20 +11,20 @@ pg_dump -U user -h host -p port -d database -Fc -x -f file.dump
 pg_restore -U user -h host -p port -d database --no-owner -1 file.dump
 ```
 
-## Deploy Discord Bot via Docker CLI
+### Deploy Discord Bot via Docker CLI
 
 ```bash
 docker build . --tag <username>/<image>
 docker run -d --name <app> --env-file ./.env <username>/<image>
 ```
 
-## Deploy Ollama
+### Deploy Ollama
 
 ```bash
 docker run -d --gpus=all -v ollama:/root/.ollama -e OLLAMA_HOST=0.0.0.0 -e OLLAMA_KEEP_ALIVE=24h -p 11434:11434 --name ollama ollama/ollama
 ```
 
-## Deploy Open-webui
+### Deploy Open-webui
 
 ```bash
 docker run -d -p 3001:8080 -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --network=host --name open-webui ghcr.io/open-webui/open-webui:main
