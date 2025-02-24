@@ -18,6 +18,12 @@ docker build . --tag <username>/<image>
 docker run -d --name <app> --env-file ./.env <username>/<image>
 ```
 
+## Deploy Ollama
+
+```bash
+docker run -d --gpus=all -v ollama:/root/.ollama -e OLLAMA_KEEP_ALIVE=24h -p 11434:11434 --name ollama ollama/ollama
+```
+
 ### Deploy OpenWebUI with Ollama
 
 ```bash
